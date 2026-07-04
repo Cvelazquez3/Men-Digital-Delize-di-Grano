@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicias del Trigo - Menú</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: #0a0706; /* Fondo negro profundo */
+            --bg-container: #1c1613; /* Recuadros oscuro-café */
+            --accent-gold: #d4a373; /* Dorado clásico */
+            --accent-gold-light: #f4e3b1; /* Dorado brillante */
+            --text-light: #ffffff; /* Blanco */
+            --text-muted: #c5bba9; /* Tono crema para descripciones */
+            --border-gold: rgba(212, 163, 115, 0.3);
+            --shadow-elegant: 0 15px 35px rgba(0, 0, 0, 0.9), 0 5px 15px rgba(212, 163, 115, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        html {
+            scroll-padding-top: 130px; /* Este espacio evita que el menú tape el título */
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* --- PORTADA INICIAL (HERO) --- */
+        .hero-section {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            /* Imagen de fondo con filtro oscuro elegante */
+            background: linear-gradient(rgba(10, 7, 6, 0.65), rgba(10, 7, 6, 0.85)), url('image_4cb974.png') center/cover no-repeat;
+            border-bottom: 1px solid var(--border-gold);
+            padding: 20px;
+        }
+
+        .hero-logo {
+            max-width: 320px;
+            width: 80%;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.8));
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--accent-gold-light);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero-details {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        /* --- BOTÓN ELEGANTE --- */
+        .hero-btn {
+            display: inline-block;
+            padding: 16px 45px;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold-light);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            background-color: rgba(28, 22, 19, 0.4);
+            backdrop-filter: blur(5px);
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .hero-btn:hover {
+            background-color: var(--accent-gold);
+            color: var(--bg-main);
+            box-shadow: 0 0 20px rgba(212, 163, 115, 0.4);
+        }
+
+        /* --- NAVEGACIÓN STICKY --- */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(10, 7, 6, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-gold);
+            z-index: 100;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+
+        nav::-webkit-scrollbar { height: 2px; }
+        nav::-webkit-scrollbar-thumb { background: var(--accent-gold); }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-container a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .nav-container a:hover, .nav-container a.active {
+            color: var(--accent-gold-light);
+            text-shadow: 0 0 8px rgba(212, 163, 115, 0.5);
+        }
+
+        /* --- ESTRUCTURA PRINCIPAL --- */
+        main {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--accent-gold-light);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+
+        .menu-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 35px;
+            margin-bottom: 80px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- IMÁGENES ESTILO PREMIUM (MÁS CHICAS, BORDES REDONDOS, FILTRO OSCURO Y SOMBRAS) --- */
+        .menu-media, .split-images .img-box {
+            flex: 1 1 300px;
+            max-width: 420px; /* Hace las imágenes más chicas */
+            border-radius: 25px; /* Bordes muy redondeados */
+            overflow: hidden;
+            box-shadow: var(--shadow-elegant);
+            border: 1px solid var(--border-gold);
+            position: relative;
+        }
+        
+        .menu-media {
+            min-height: 380px;
+            margin: 0 auto;
+        }
+
+        .split-images {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 1 1 300px;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .split-images .img-box {
+            min-height: 220px;
+        }
+
+        .menu-media img, .split-images .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0; left: 0;
+            /* Filtro oscuro para darle ese toque elegante y moody */
+            filter: brightness(0.6) contrast(1.15) saturate(1.1); 
+            transition: transform 0.6s ease;
+        }
+
+        .menu-media:hover img, .split-images .img-box:hover img {
+            transform: scale(1.05);
+        }
+
+        /* CAJAS DE MENÚ (TABLAS) */
+        .menu-content-box {
+            flex: 2 1 500px;
+            background-color: var(--bg-container);
+            border: 1px solid var(--border-gold);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow-elegant);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* ETIQUETAS DE TAMAÑO */
+        .sizes-banner {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-gold);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .size-tag { text-align: center; flex: 1; }
+        .size-title { color: var(--accent-gold-light); font-weight: 600; font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 2px; display: block; }
+        .size-info { color: var(--text-muted); font-size: 0.75rem; font-family: 'Playfair Display', serif; font-style: italic; }
+
+        /* TABLAS DE PRECIOS */
+        table { width: 100%; border-collapse: collapse; }
+        th { font-family: 'Cinzel', serif; color: var(--accent-gold); font-size: 0.8rem; letter-spacing: 2px; padding: 12px 8px; border-bottom: 1px solid var(--border-gold); text-transform: uppercase; }
+        td { padding: 16px 8px; border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: middle; }
+        tr:last-child td { border-bottom: none; }
+
+        .product-name { font-weight: 500; color: var(--text-light); font-size: 1.05rem; letter-spacing: 1px; }
+        .product-description { font-family: 'Playfair Display', serif; font-style: italic; color: var(--text-muted); font-size: 0.85rem; margin-top: 4px; }
+        .price-cell { font-family: 'Cinzel', serif; color: var(--accent-gold-light); font-weight: 600; font-size: 1.15rem; text-align: center; width: 80px; }
+
+        /* GRID PARA HAMBURGUESAS/BEBIDAS */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+            width: 100%;
+        }
+
+        .menu-card {
+            background-color: transparent;
+            border: 1px solid rgba(212, 163, 115, 0.2);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 12px;
+            transition: background-color 0.3s;
+        }
+
+        .menu-card:hover { background-color: rgba(212, 163, 115, 0.05); border-color: var(--accent-gold); }
+        .card-title { font-weight: 500; font-size: 0.95rem; }
+        .card-price { font-family: 'Cinzel', serif; color: var(--accent-gold-light); font-weight: 600; font-size: 1.1rem; }
+
+        /* CTA FINAL / SECCIÓN FOOTER */
+        .bottom-cta {
+            text-align: center;
+            padding: 80px 20px;
+            margin-top: 60px;
+        }
+
+        .cta-greeting {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--accent-gold-light);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .cta-location {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .social-icons a {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-gold-light);
+            transform: translateY(-3px);
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #050303;
+            border-top: 1px solid var(--border-gold);
+        }
+
+        .footer-logo { max-width: 140px; margin-bottom: 15px; opacity: 0.8; }
+        .footer-text { font-family: 'Montserrat', sans-serif; color: var(--text-muted); font-size: 0.8rem; letter-spacing: 1px; }
+
+        /* ANIMACIONES */
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* RESPONSIVIDAD */
+        @media (max-width: 768px) {
+            .hero-logo { max-width: 250px; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .hero-details { font-size: 0.75rem; letter-spacing: 2px; }
+            .menu-media, .split-images .img-box { min-height: 250px; }
+            .menu-content-box { padding: 25px; }
+            .section-header h2 { font-size: 1.8rem; }
+            td { padding: 12px 4px; }
+            .price-cell { font-size: 1rem; width: 60px; }
+            .cta-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-section">
+        <img src="img/LogoOscuro.png" alt="Delicias del Trigo" class="hero-logo">
+        <p class="hero-subtitle">Pan Italiano &middot; Sabor Artesanal</p>
+        <p class="hero-details">Establecidos en 2024 &middot; Colima, México</p>
+        <a href="#menu-inicio" class="hero-btn">Ver el Menú</a>
+    </header>
+
+    <nav id="menu-inicio">
+        <div class="nav-container">
+            <a href="#pizzas">Especialidades</a>
+            <a href="#premium">Premium</a>
+            <a href="#duo">Duo</a>
+            <a href="#parrilla">A la Parrilla</a>
+            <a href="#snacks-hamburguesas">Hamburguesas</a>
+            <a href="#especialidades">Más Delicias</a>
+            <a href="#bebidas">Bebidas</a>
+        </div>
+    </nav>
+
+    <main>
+
+        <section id="pizzas">
+            <div class="section-header">
+                <h2>Pizzas Especialidades</h2>
+            </div>
+            <div class="menu-row">
+                <div class="menu-media">
+                    <img src="img/image_4c56dd.png" alt="Pizzas Especialidades">
+                </div>
+                <div class="menu-content-box">
+                    <div class="sizes-banner">
+                        <div class="size-tag"><span class="size-title">Chica</span><span class="size-info">8 reb. (2 pers.)</span></div>
+                        <div class="size-tag"><span class="size-title">Grande</span><span class="size-info">12 reb. (4 pers.)</span></div>
+                        <div class="size-tag"><span class="size-title">Mega</span><span class="size-info">24 reb. (7 pers.)</span></div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Especialidad</th>
+                                <th>Chica</th>
+                                <th>Grande</th>
+                                <th>Mega</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="product-name">Peperoni</div></td>
+                                <td class="price-cell">$150</td><td class="price-cell">$250</td><td class="price-cell">$450</td>
+                            </tr>
+                            <tr>
+                                <td><div class="product-name">Hawaiana</div><div class="product-description">Jamón y piña</div></td>
+                                <td class="price-cell">$150</td><td class="price-cell">$250</td><td class="price-cell">$450</td>
+                            </tr>
+                            <tr>
+                                <td><div class="product-name">Champiñones</div><div class="product-description">Champiñones y jamón</div></td>
+                                <td class="price-cell">$150</td><td class="price-cell">$250</td><td class="price-cell">$450</td>
+                            </tr>
+                            <tr>
+                                <td><div class="product-name">Mexicana</div><div class="product-description">Cebolla, jitomate, jalapeño y longaniza</div></td>
+                                <td class="price-cell">$150</td><td class="price-cell">$250</td><td class="price-cell">$450</td>
+                            </tr>
+                            <tr>
+                                <td><div class="product-name">Carnes Frías</div><div class="product-description">Jamón, tocino y salchicha</div></td>
+                                <td class="price-cell">$150</td><td class="price-cell">$250</td><td class="price-cell">$450</td>
+                            </tr>
+                            <tr>
+                                <td><div class="product-name">Vegetariana</div><div class="product-description">Jitomate, cebolla, jalapeño, piña y champiñones</div></td>
+                                <td class="price-cell">$160</td><td class="price-cell">$260</td><td class="price-cell">$460</td>
+                            </tr>
+                            <tr>
+                                <td><div class="product-name">Pizza Dino</div><div class="product-description">Peperoni y tocino</div></td>
+                                <td class="price-cell">$150</td><td class="price-cell">$250</td><td class="price-cell">$450</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="premium">
+            <div class="section-header">
+                <h2>Especialidades Premium</h2>
+            </div>
+            <div class="menu-row">
+                <div class="menu-content-box">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Especialidad</th>
+                                <th>Chica</th>
+                                <th>Grande</th>
+                                <th>Mega</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="product-name">Pizza Vitaria</div><div class="product-description">Peperoni, espinaca, aceite de oliva y parmesano</div></td>
+                                <td class="price-cell">$170</td><td class="price-cell">$270</td><td class="price-cell">$470</td>
+                            </tr>
+                            <tr>
+                                <td><div class="product-name">Pizza Napolitana</div><div class="product-description">Peperoni, albahaca, aceite de oliva y parmesano</div></td>
+                                <td class="price-cell">$170</td><td class="price-cell">$270</td><td class="price-cell">$470</td>
+                            </tr>
+                            <tr>
+                                <td><div class="product-name">Pizza Gamberetti</div><div class="product-description">Camarón, piña, morrón, cebolla y albahaca</div></td>
+                                <td class="price-cell">$190</td><td class="price-cell">$320</td><td class="price-cell">$550</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="split-images">
+                    <div class="img-box"><img src="img/image_4c5320.png" alt="Premium 1"></div>
+                    <div class="img-box"><img src="img/image_56cbc7.png.jpeg" alt="Premium 2"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="duo">
+            <div class="section-header">
+                <h2>Pizzas Duo</h2>
+            </div>
+            <div class="menu-row">
+                <div class="menu-media">
+                    <img src="img/image_4cb956.jpeg" alt="Pizzas Duo">
+                </div>
+                <div class="menu-content-box">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Combinación</th>
+                                <th>Chica</th>
+                                <th>Grande</th>
+                                <th>Mega</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><div class="product-name">Hawaiana / Peperoni</div></td><td class="price-cell">$150</td><td class="price-cell">$250</td><td class="price-cell">$450</td></tr>
+                            <tr><td><div class="product-name">Hawaiana / Mexicana</div></td><td class="price-cell">$150</td><td class="price-cell">$250</td><td class="price-cell">$450</td></tr>
+                            <tr><td><div class="product-name">Hawaiana / Champiñones</div></td><td class="price-cell">$150</td><td class="price-cell">$250</td><td class="price-cell">$450</td></tr>
+                            <tr><td><div class="product-name">Peperoni / Mexicana</div></td><td class="price-cell">$150</td><td class="price-cell">$250</td><td class="price-cell">$450</td></tr>
+                            <tr><td><div class="product-name">Peperoni / Champiñones</div></td><td class="price-cell">$150</td><td class="price-cell">$250</td><td class="price-cell">$450</td></tr>
+                            <tr><td><div class="product-name">Mexicana / Champiñones</div></td><td class="price-cell">$150</td><td class="price-cell">$250</td><td class="price-cell">$450</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="parrilla">
+            <div class="section-header">
+                <h2>A la Parrilla</h2>
+            </div>
+            <div class="menu-row">
+                <div class="menu-content-box">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Especialidad</th>
+                                <th>Chica</th>
+                                <th>Grande</th>
+                                <th>Mega</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="product-name">Arrachera</div></td>
+                                <td class="price-cell">$190</td><td class="price-cell">$320</td><td class="price-cell">$550</td>
+                            </tr>
+                            <tr>
+                                <td><div class="product-name">Chorizo Corona</div></td>
+                                <td class="price-cell">$190</td><td class="price-cell">$320</td><td class="price-cell">$550</td>
+                            </tr>
+                            <tr>
+                                <td><div class="product-name">Suprema</div><div class="product-description">Arrachera y Chorizo Corona</div></td>
+                                <td class="price-cell">$230</td><td class="price-cell">$400</td><td class="price-cell">$700</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="menu-media">
+                    <img src="img/image_4cb974.jpeg" alt="Pizzas a la Parrilla">
+                </div>
+            </div>
+        </section>
+
+        <section id="snacks-hamburguesas">
+            <div class="section-header">
+                <h2>Hamburguesas & Snacks</h2>
+            </div>
+            <div class="menu-row">
+                <div class="split-images">
+                    <div class="img-box"><img src="img/image_4c56c1.png" alt="Hamburguesas"></div>
+                    <div class="img-box"><img src="img/image_4cbc1f.jpeg" alt="Snacks"></div>
+                </div>
+                <div class="menu-content-box">
+                    <h3 style="font-family: 'Cinzel', serif; color: var(--accent-gold); margin-bottom: 20px; font-size: 1.2rem; border-bottom: 1px solid var(--border-gold); padding-bottom: 10px;">Hamburguesas Gourmet</h3>
+                    <div class="cards-grid" style="margin-bottom: 25px;">
+                        <div class="menu-card"><span class="card-title">Clásica</span><span class="card-price">$60</span></div>
+                        <div class="menu-card"><span class="card-title">Hawaiana</span><span class="card-price">$90</span></div>
+                        <div class="menu-card"><span class="card-title">Especial</span><span class="card-price">$100</span></div>
+                        <div class="menu-card"><span class="card-title">Camarón</span><span class="card-price">$100</span></div>
+                        <div class="menu-card"><span class="card-title">Mar y Tierra</span><span class="card-price">$120</span></div>
+                        <div class="menu-card"><span class="card-title">Suprema</span><span class="card-price">$180</span></div>
+                        <div class="menu-card" style="grid-column: 1 / -1; border-color: var(--accent-gold);"><span class="card-title">Mar y Tierra Suprema</span><span class="card-price">$200</span></div>
+                    </div>
+
+                    <h3 style="font-family: 'Cinzel', serif; color: var(--accent-gold); margin-bottom: 15px; font-size: 1.2rem; border-bottom: 1px solid var(--border-gold); padding-bottom: 10px; margin-top: 15px;">Snacks</h3>
+                    <table>
+                        <tbody>
+                            <tr><td><div class="product-name">Papas a la Francesa</div></td><td class="price-cell">$40 (CH)</td><td class="price-cell">$65 (GR)</td></tr>
+                            <tr><td><div class="product-name">Papas Gajo</div></td><td class="price-cell">$50 (CH)</td><td class="price-cell">$70 (GR)</td></tr>
+                            <tr><td><div class="product-name">Salchipulpos</div></td><td class="price-cell">$45 (CH)</td><td class="price-cell">$65 (GR)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="especialidades">
+            <div class="section-header">
+                <h2>Más Especialidades</h2>
+            </div>
+            <div class="menu-row">
+                <div class="menu-content-box">
+                    <h3 style="font-family: 'Cinzel', serif; color: var(--accent-gold); margin-bottom: 20px; font-size: 1.2rem; letter-spacing: 2px;">Ensaladas</h3>
+                    <table style="margin-bottom: 30px;">
+                        <tbody>
+                            <tr><td><div class="product-name">Pollo</div></td><td class="price-cell" style="text-align: right;">$125</td></tr>
+                            <tr><td><div class="product-name">Res</div></td><td class="price-cell" style="text-align: right;">$140</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3 style="font-family: 'Cinzel', serif; color: var(--accent-gold); margin-bottom: 20px; font-size: 1.2rem; letter-spacing: 2px; border-top: 1px solid var(--border-gold); padding-top: 20px;">Queso Fundido</h3>
+                    <table>
+                        <tbody>
+                            <tr><td><div class="product-name">Arrachera</div></td><td class="price-cell" style="text-align: right;">$175</td></tr>
+                            <tr><td><div class="product-name">Chorizo</div></td><td class="price-cell" style="text-align: right;">$170</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="menu-media">
+                    <img src="img/image_4cbc57.png" alt="Ensaladas y Variedades">
+                </div>
+            </div>
+
+            <div class="menu-row">
+                <div class="split-images">
+                    <div class="img-box"><img src="img/image_4c56e2.png" alt="Baguettes"></div>
+                    <div class="img-box"><img src="img/image_4c5723.png" alt="Croissants"></div>
+                </div>
+                <div class="menu-content-box">
+                    <h3 style="font-family: 'Cinzel', serif; color: var(--accent-gold); margin-bottom: 20px; font-size: 1.4rem; letter-spacing: 2px;">Baguettes</h3>
+                    <table style="margin-bottom: 30px;">
+                        <thead>
+                            <tr><th style="text-align: left;">Tipo</th><th>Completo</th><th>Mitad</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><div class="product-name">Sencillo</div></td><td class="price-cell">$95</td><td class="price-cell">$50</td></tr>
+                            <tr><td><div class="product-name">Pollo</div></td><td class="price-cell">$120</td><td class="price-cell">$70</td></tr>
+                            <tr><td><div class="product-name">Arrachera</div></td><td class="price-cell">$150</td><td class="price-cell">$80</td></tr>
+                            <tr><td><div class="product-name">Combinado</div></td><td class="price-cell">$160</td><td class="price-cell">$85</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3 style="font-family: 'Cinzel', serif; color: var(--accent-gold); margin-bottom: 20px; font-size: 1.4rem; letter-spacing: 2px; border-top: 1px solid var(--border-gold); padding-top: 20px;">Croissants</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 30px;">
+                        <div style="flex: 1 1 150px;">
+                            <h4 style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--accent-gold-light); letter-spacing: 1px; margin-bottom: 10px;">SALADOS</h4>
+                            <table>
+                                <tr><td>Pollo</td><td class="price-cell">$70</td></tr>
+                                <tr><td>Res</td><td class="price-cell">$85</td></tr>
+                                <tr><td>Chorizo</td><td class="price-cell">$65</td></tr>
+                                <tr><td>Jamón</td><td class="price-cell">$60</td></tr>
+                            </table>
+                        </div>
+                        <div style="flex: 1 1 150px;">
+                            <h4 style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--accent-gold-light); letter-spacing: 1px; margin-bottom: 10px;">DULCES</h4>
+                            <table>
+                                <tr><td>Chocolate</td><td class="price-cell">$40</td></tr>
+                                <tr><td>Lechera</td><td class="price-cell">$40</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bebidas">
+            <div class="section-header">
+                <h2>Bebidas & Postres</h2>
+            </div>
+            <div class="menu-row">
+                <div class="menu-content-box">
+                    <div class="cards-grid" style="margin-bottom: 30px;">
+                        <div class="menu-card"><span class="card-title">Café <span style="font-family:'Playfair Display'; color:var(--text-muted); font-size:0.8rem; font-style:italic; display:block;">Capuccino o Vainilla</span></span><span class="card-price">$25</span></div>
+                        <div class="menu-card"><span class="card-title">Café Rocas</span><span class="card-price">$50</span></div>
+                        <div class="menu-card"><span class="card-title">Frapé</span><span class="card-price">$50</span></div>
+                        <div class="menu-card"><span class="card-title">Malteada</span><span class="card-price">$50</span></div>
+                        <div class="menu-card"><span class="card-title">Refresco 355</span><span class="card-price">$35</span></div>
+                        <div class="menu-card"><span class="card-title">Refresco 600</span><span class="card-price">$45</span></div>
+                        <div class="menu-card" style="grid-column: 1/-1; border-color:var(--accent-gold);"><span class="card-title">Agua Fresca 1 L</span><span class="card-price">$50</span></div>
+                    </div>
+
+                    <h3 style="font-family: 'Cinzel', serif; color: var(--accent-gold); margin-bottom: 15px; font-size: 1.2rem; border-top: 1px solid var(--border-gold); padding-top: 15px;">Postres</h3>
+                    <div class="cards-grid">
+                        <div class="menu-card"><span class="card-title">Cheese Cake</span><span class="card-price">$45</span></div>
+                        <div class="menu-card"><span class="card-title">Flan</span><span class="card-price">$35</span></div>
+                        <div class="menu-card"><span class="card-title">Gelatina</span><span class="card-price">$30</span></div>
+                    </div>
+                </div>
+                <div class="split-images">
+                    <div class="img-box"><img src="img/image_4c5340.png" alt="Bebidas"></div>
+                    <div class="img-box"><img src="img/image_4cbc76.png" alt="Postres"></div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <section class="bottom-cta">
+        <h2 class="cta-title">Delicias del Trigo</h2>
+        <p class="cta-greeting">Pan Italiano &middot; Sabor Artesanal</p>
+        <p class="cta-location">ESTABLECIDOS EN 2024 &middot; COLIMA, MÉXICO</p>
+        
+        <div class="social-icons">
+           <a href="https://wa.me/523131040815" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/delizedigrano?igsh=MWtyenl6ZjlzMzFnaw=="><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1EQTaBVXu9/?mibextid=wwXIfr"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <img src="img/LogoOscuro.png" alt="Delicias del Trigo" class="footer-logo">
+        <p class="footer-text">&copy; 2026 Delicias del Trigo. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            let sections = document.querySelectorAll('section');
+            let navLinks = document.querySelectorAll('.nav-container a');
+            
+            sections.forEach(sec => {
+                let top = window.scrollY;
+                let offset = sec.offsetTop - 180;
+                let height = sec.offsetHeight;
+                let id = sec.getAttribute('id');
+                
+                if(top >= offset && top < offset + height) {
+                    navLinks.forEach(links => {
+                        links.classList.remove('active');
+                    });
+                    let activeLink = document.querySelector('.nav-container a[href*=' + id + ']');
+                    if(activeLink) activeLink.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
