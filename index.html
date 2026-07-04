@@ -123,13 +123,21 @@
         nav::-webkit-scrollbar { height: 2px; }
         nav::-webkit-scrollbar-thumb { background: var(--accent-gold); }
 
+        
         .nav-container {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start; /* Empieza a la izquierda en celulares para permitir el deslizamiento total */
             gap: 30px;
             padding: 0 20px;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        /* En pantallas medianas y grandes donde sí cabe todo, lo volvemos a centrar */
+        @media (min-width: 992px) {
+            .nav-container {
+                justify-content: center;
+            }
         }
 
         .nav-container a {
@@ -374,7 +382,7 @@
         <img src="img/LogoOscuro.png" alt="Delicias del Trigo" class="hero-logo">
         <p class="hero-subtitle">Pan Italiano &middot; Sabor Artesanal</p>
         <p class="hero-details">Establecidos en 2024 &middot; Colima, México</p>
-        <a href="#menu-inicio" class="hero-btn">Ver el Menú</a>
+        <a href="#pizzas" class="hero-btn">Ver el Menú</a>
     </header>
 
     <nav id="menu-inicio">
@@ -466,7 +474,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><div class="product-name">Pizza Vitaria</div><div class="product-description">Peperoni, espinaca, aceite de oliva y parmesano</div></td>
+                                <td><div class="product-name">Pizza Vitoria</div><div class="product-description">Peperoni, espinaca, aceite de oliva y parmesano</div></td>
                                 <td class="price-cell">$170</td><td class="price-cell">$270</td><td class="price-cell">$470</td>
                             </tr>
                             <tr>
@@ -665,7 +673,7 @@
                 <div class="menu-content-box">
                     <div class="cards-grid" style="margin-bottom: 30px;">
                         <div class="menu-card"><span class="card-title">Café <span style="font-family:'Playfair Display'; color:var(--text-muted); font-size:0.8rem; font-style:italic; display:block;">Capuccino o Vainilla</span></span><span class="card-price">$25</span></div>
-                        <div class="menu-card"><span class="card-title">Café Rocas</span><span class="card-price">$50</span></div>
+                        <div class="menu-card"><span class="card-title">Café en las Rocas</span><span class="card-price">$50</span></div>
                         <div class="menu-card"><span class="card-title">Frapé</span><span class="card-price">$50</span></div>
                         <div class="menu-card"><span class="card-title">Malteada</span><span class="card-price">$50</span></div>
                         <div class="menu-card"><span class="card-title">Refresco 355</span><span class="card-price">$35</span></div>
